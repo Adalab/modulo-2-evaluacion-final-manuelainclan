@@ -14,6 +14,7 @@ fetch(URL).then((response) => response.json())
     ({
         image: drink.strDrinkThumb,
         name: drink.strDrink,
+        drinkId: drink.idDrink
     }));
     
     console.log(drinkListData);
@@ -31,6 +32,7 @@ function renderDrinkList(drinkListData) {
     for (const drinkItem of drinkListData) {
        renderDrink(drinkItem);
     }
+    addEventToDrink()
 }
 
 function renderDrink(drinkData) {
@@ -39,6 +41,8 @@ function renderDrink(drinkData) {
     const liElement = document.createElement('li');
     liElement.setAttribute('class', 'drink');
     const articleElement = document.createElement('article');
+    articleElement.setAttribute('class', 'js-article-drink');
+    articleElement.setAttribute('id', drinkData.drinkId);
     const imgArticle = document.createElement('img');
     //a la imagen le tengo que poner atributos para poner el enlace
     imgArticle.src = drinkData.image;

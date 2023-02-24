@@ -1,3 +1,4 @@
+/* eslint-disable strict */
 /**
  * Añadir funcionalidad de búsqueda:
  * cuando se escriba en el input me salga lo q busco
@@ -13,12 +14,14 @@ event.preventDefault();
  fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${searchInput.value}`).then((response) => response.json())
 .then((data) => {
     
-    console.log(data)
+    console.log(data);
+    
     drinkListData = data.drinks.map((drink) =>
     ({
         image: drink.strDrinkThumb,
         name: drink.strDrink,
     }));
+
     
     console.log(drinkListData);
     drinkList.innerHTML = "";
