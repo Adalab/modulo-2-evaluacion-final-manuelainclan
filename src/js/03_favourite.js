@@ -3,11 +3,12 @@
 
 
 function handleClick(ev) {
-    
+    ev.preventDefault();
     ev.currentTarget.classList.toggle('selected'); 
     //LUEGO ORDENAR EN FUNCIONES
     //ponemos un find porque necesito que sea individualizada la búsqueda, porque es en cada click, devuelve el primer elemento que cumple la condición
     const idSelected = ev.currentTarget.id;
+
     const drinkSelected = drinkListData.find((drink) => drink.drinkId === idSelected);
     const indexFavourite = favouriteListData.findIndex((drink) => drink.drinkId === idSelected);
     if(indexFavourite === -1) {
@@ -16,8 +17,9 @@ function handleClick(ev) {
     else {
     favouriteListData.splice(indexFavourite, 1);
    }
-    renderFavouriteList(favouriteListData)
-  
+    
+    localStorage.setItem('favouriteList', JSON.stringify(favouriteListData));
+    renderFavouriteList(favouriteListData);
 }
 
 function renderFavouriteList(favouriteListData) {
@@ -36,8 +38,6 @@ function renderFavouriteList(favouriteListData) {
 function addEventToDrink() {
     const articleList = document.querySelectorAll('.js-article-drink');
     for (const favouriteArticle of articleList) {
-    favouriteArticle.addEventListener("click", handleClick)
-    console.log('funciona')
+    favouriteArticle.addEventListener("click", handleClick);
    }
-
 }
