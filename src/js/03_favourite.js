@@ -24,38 +24,11 @@ function renderFavouriteList(favouriteListData) {
     //vaciamos la lista antes para que no se vayan almacenando
     favouriteList.innerHTML = '';
     for (const favourite of favouriteListData) {
-       renderFavourite(favourite);
+         const liElement = renderDrink(favourite);
+        favouriteList.appendChild(liElement);
+        
     }
 }
-
-function renderFavourite(drinkData) {
-    //esta funcion pinta un coctel//
-    //con Dom crear el elemento li, crear el articulo que tiene dentro,lo q tiene dentro del articulo, ponerle atributos pegarselo a sí mismo y pegarlo al padre// 
-    const liElement = document.createElement('li');
-    liElement.setAttribute('class', 'drink');
-    const articleElement = document.createElement('article');
-    articleElement.setAttribute('class', 'js-article-drink');
-    articleElement.setAttribute('id', drinkData.drinkId);
-    const imgArticle = document.createElement('img');
-    //a la imagen le tengo que poner atributos para poner el enlace
-    imgArticle.src = drinkData.image;
-    imgArticle.setAttribute('class', 'drink-img');
-    imgArticle.setAttribute('alt', 'cóctel');
-    const nameArticle = document.createElement('h3');
-    const nameContent = document.createTextNode(drinkData.name);
-    nameArticle.setAttribute('class', 'drink-name');
-
-    //pegar elementos a sus papis//
-    
-    favouriteList.appendChild(liElement);
-    liElement.appendChild(articleElement);
-    articleElement.appendChild(imgArticle);
-    articleElement.appendChild(nameArticle);
-    nameArticle.appendChild(nameContent);
-
-};
-
-
 
 
 // esta función la tengo q llamar dentro del fetch que da los datos, porque como js es asíncrono si no no estaría relleno para cuando la llame, la voy a colocar dentro del renderDrinkList porque es una función que reutilizo en los varios fecth que tengo.

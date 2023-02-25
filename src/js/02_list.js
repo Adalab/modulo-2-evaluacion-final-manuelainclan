@@ -20,13 +20,6 @@ fetch(URL).then((response) => response.json())
     //renderizar la lista
 })
 
-function renderDrinkList(drinkListData) {
-    //esta función es una bucle para hacer una lista con todos las bebidas, rellena el renderDrink con los datos del drinkListaData
-    for (const drinkItem of drinkListData) {
-       renderDrink(drinkItem);
-    }
-    addEventToDrink()
-}
 
 function renderDrink(drinkData) {
     //esta funcion pinta un coctel//
@@ -47,12 +40,28 @@ function renderDrink(drinkData) {
 
     //pegar elementos a sus papis//
     
-    drinkList.appendChild(liElement);
+    // aqui no lo pego al ul porque luego quiero reutilizar la función,entonces lo pego en la función de render list, para eso no me tengo q olvidar de llamar a li dentro de la función y aquí poner el return
     liElement.appendChild(articleElement);
     articleElement.appendChild(imgArticle);
     articleElement.appendChild(nameArticle);
-    nameArticle.appendChild(nameContent);   
-
+    nameArticle.appendChild(nameContent);  
+    
+    
+    return liElement; 
+    
 };
+
+
+function renderDrinkList(drinkListData) {
+    //esta función es una bucle para hacer una lista con todos las bebidas, rellena el renderDrink con los datos del drinkListaData
+    for (const drinkItem of drinkListData) {
+        const liElement = renderDrink(drinkItem);
+        drinkList.appendChild(liElement);
+        
+       
+    }
+    addEventToDrink()
+}
+
 
 
