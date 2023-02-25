@@ -8,27 +8,20 @@ dom
 
 fetch(URL).then((response) => response.json())
 .then((data) => {
-    
-    console.log(data)
     drinkListData = data.drinks.map((drink) =>
     ({
         image: drink.strDrinkThumb,
         name: drink.strDrink,
         drinkId: drink.idDrink
     }));
-    
-    console.log(drinkListData);
     renderDrinkList(drinkListData);
     //meter datos en la lista de cocteles
     //ver que sale en los datos
     //renderizar la lista
-   
 })
 
 function renderDrinkList(drinkListData) {
     //esta función es una bucle para hacer una lista con todos las bebidas, rellena el renderDrink con los datos del drinkListaData
-    console.log(drinkListData);
-    
     for (const drinkItem of drinkListData) {
        renderDrink(drinkItem);
     }
@@ -53,12 +46,12 @@ function renderDrink(drinkData) {
     nameArticle.setAttribute('class', 'drink-name');
 
     //pegar elementos a sus papis//
-
+    
     drinkList.appendChild(liElement);
     liElement.appendChild(articleElement);
     articleElement.appendChild(imgArticle);
     articleElement.appendChild(nameArticle);
-    nameArticle.appendChild(nameContent);
+    nameArticle.appendChild(nameContent);   
 
 };
 

@@ -6,26 +6,19 @@
  * el evento lo que hace es meter el valor del input text en la url
  */
 
-
-
-
 function handleSearchDrink(event) {
 event.preventDefault();
  fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${searchInput.value}`).then((response) => response.json())
 .then((data) => {
-    
-    console.log(data);
-    
     drinkListData = data.drinks.map((drink) =>
     ({
         image: drink.strDrinkThumb,
         name: drink.strDrink,
+        drinkId: drink.idDrink
     }));
-
-    
-    console.log(drinkListData);
     drinkList.innerHTML = "";
     renderDrinkList(drinkListData);
+    
     //meter datos en la lista de cocteles
     //ver que sale en los datos
     //renderizar la lista
