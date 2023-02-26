@@ -2,35 +2,43 @@
 /**
  * Añadir funcionalidad de búsqueda:
  * cuando se escriba en el input me salga lo q busco
- * evento de click en el botón buscar 
+ * evento de click en el botón buscar
  * el evento lo que hace es meter el valor del input text en la url
  */
 
+const favouriteListStored = JSON.parse(localStorage.getItem('favouriteList'));
+function drawLocalStorage() {
+  if (favouriteListStored) {
+//Para q no se borren cada vez que se guardan hay q meterlo en la lista de favoritos
+    favouriteListData = favouriteListStored;
+    renderFavouriteList(favouriteListData);
+  }
+}
+drawLocalStorage();
+
+//Esta función es la manejadora del evento de búsqueda
 function handleSearchDrink(event) {
-event.preventDefault();
- fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${searchInput.value}`)
-.then((response) => response.json())
-.then((data) => {
-    if(data.drinks.strDrinkThumb = ''){
-    drinkListData = data.drinks.map((drink) => ({
-        image: alternativeImg,
-        name: drink.strDrink,
-        drinkId: drink.idDrink
+  event.preventDefault();
+  fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${searchInput.value}`)
+  .then((response) => response.json())
+  .then((data) => {
+      if(data.drinks.strDrinkThumb = ''){
+        drinkListData = data.drinks.map((drink) => ({
+          image: alternativeImg,
+          name: drink.strDrink,
+          drinkId: drink.idDrink,
+          alt: drink.strDrink
         }));
         renderDrinkList(drinkListData);
-    }else {drinkListData = data.drinks.map((drink) => ({
+      }else {drinkListData = data.drinks.map((drink) => ({
         image: drink.strDrinkThumb,
         name: drink.strDrink,
-        drinkId: drink.idDrink
-        }));
-        renderDrinkList(drinkListData);}
+        drinkId: drink.idDrink,
+        alt: drink.strDrink
+      }));
+      renderDrinkList(drinkListData);}
     });
-    drinkList.innerHTML = "";
-    
-    
-    //meter datos en la lista de cocteles
-    //ver que sale en los datos
-    //renderizar la lista
+  drinkList.innerHTML = '';
 }
 
-searchBtn.addEventListener('click', handleSearchDrink)
+searchBtn.addEventListener('click', handleSearchDrink);

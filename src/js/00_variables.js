@@ -7,6 +7,7 @@ const drinkList = document.querySelector('.js-drink-list');
 const favouriteList = document.querySelector('.js-favourite-list');
 
 
+
 const URL = `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita`;
 const alternativeImg = `https://via.placeholder.com/210x295/ffffff/666666/?text=TV`;
 
