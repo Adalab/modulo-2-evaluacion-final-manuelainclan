@@ -1,11 +1,4 @@
 /* eslint-disable strict */
-/**
- * Añadir funcionalidad de búsqueda:
- * cuando se escriba en el input me salga lo q busco
- * evento de click en el botón buscar
- * el evento lo que hace es meter el valor del input text en la url
- */
-
 const favouriteListStored = JSON.parse(localStorage.getItem('favouriteList'));
 function drawLocalStorage() {
   if (favouriteListStored) {
