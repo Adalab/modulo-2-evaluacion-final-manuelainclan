@@ -82,3 +82,12 @@ function addEventToReset(){
   const removeBtn = document.querySelector('.js-btn-remove');
   removeBtn.addEventListener('click', handleAllDelete);
 }
+
+function handleClickLog(ev) {
+  ev.preventDefault();
+  for (const fav of favouriteListData) {
+    console.log(fav.name);
+  }
+}
+
+logBtn.addEventListener(('click'), handleClickLog);

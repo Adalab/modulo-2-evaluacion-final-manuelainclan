@@ -6,7 +6,8 @@ fetch(URL).then((response) => response.json())
         image: drink.strDrinkThumb,
         name: drink.strDrink,
         drinkId: drink.idDrink,
-        alt: drink.strDrink
+        alt: drink.strDrink,
+        desc: drink.strCategory
       }));
     renderDrinkList(drinkListData);
     //meter datos en la lista de cocteles
@@ -29,11 +30,15 @@ function renderDrink(drinkData) {
   const nameArticle = document.createElement('h3');
   const nameContent = document.createTextNode(drinkData.name);
   nameArticle.setAttribute('class', 'section--ul--li--article--title drink-name');
+  const descElement = document.createElement('p');
+  const descContent = document.createTextNode(drinkData.desc);
 
   liElement.appendChild(articleElement);
   articleElement.appendChild(imgArticle);
   articleElement.appendChild(nameArticle);
+  articleElement.appendChild(descElement);
   nameArticle.appendChild(nameContent);
+  descElement.appendChild(descContent);
   return liElement;
 }
 

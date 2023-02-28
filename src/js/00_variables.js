@@ -2,7 +2,7 @@
 
 const searchInput = document.querySelector('.js-search-input');
 const searchBtn = document.querySelector('.js-search-btn');
-const resetBtn = document.querySelector('.js-reset-btn');
+const logBtn = document.querySelector('.js-log-btn');
 const drinkList = document.querySelector('.js-drink-list');
 const favouriteList = document.querySelector('.js-favourite-list');
 
